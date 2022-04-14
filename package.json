@@ -9,13 +9,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "kaboom": "^2000.2.9",
-    "nodemon": "^2.0.15"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/node": "^7.16.8",
-    "@babel/preset-env": "^7.16.11"
+    "@babel/core": "^7.12.0",
+    "parcel": "^2.4.1"
   }
 }
