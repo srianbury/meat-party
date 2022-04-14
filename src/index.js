@@ -10,8 +10,17 @@ loadSprite("player1", player1);
 loadSprite("player2", player2);
 
 add([text("hi lhito"), pos(120, 80)]);
-add([sprite("player1"), pos(120, 80)]);
-add([sprite("player2"), pos(80, 120)]);
+// add([sprite("player1"), pos(120, 80),area(),body()]);
+// add([sprite("player2"), pos(80, 120)]);
+
+add([
+    rect(width(), 48),
+    pos(0, height() -48),
+    outline(4),
+    area(),
+    solid(),
+    color(127,200,255),
+])
 
 mattsPart();
 lhitosPart();
