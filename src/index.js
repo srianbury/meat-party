@@ -14,4 +14,4 @@ add([sprite("player1"), pos(120, 80)]);
 add([sprite("player2"), pos(80, 120)]);
 
 mattsPart();
-lhitosPart();
+lhitosPart(); // testin
