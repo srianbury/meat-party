@@ -1,7 +1,7 @@
 
 function lhitosPart() {
 //player1 movement
- const player1 = add(["player","1",sprite("player1"), pos(120, 80),area(),body()]);
+ const player1 = add(["player","1",sprite("player1", {height: 100, width: 100}), pos(120, 80),area(),body()]);
 
   onKeyPress("space", () => {
     player1.jump()
@@ -20,7 +20,7 @@ function lhitosPart() {
 
 
 //player2 movement
-const player2 = add(["player","2",sprite("player2"), pos(400, 120),area(),body(), scale(vec2(1))]);
+const player2 = add(["player","2",sprite("player2", {height: 100, width: 100}), pos(400, 120),area(),body(), scale(vec2(1))]);
 
 onKeyPress("control", () => {
   player2.jump()
