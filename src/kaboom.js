@@ -1,9 +1,8 @@
 function initKaboom() {
-  window.kaboom({
+  kaboom({
     global: true,
     fullscreen: true,
     debug: true,
-    scale: 2,
   });
 }
 
