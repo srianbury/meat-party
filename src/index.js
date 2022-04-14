@@ -1,10 +1,12 @@
-import { k } from "./kaboom";
+import { initKaboom } from "./kaboom";
 import { mattsPart } from "./matt";
 import { lhitosPart } from "./lhito";
 
-k.scene("main", () => {
+initKaboom();
+
+scene("main", () => {
   mattsPart();
   lhitosPart();
 });
 
-k.start("main");
+start("main");
