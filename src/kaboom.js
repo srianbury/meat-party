@@ -3,6 +3,7 @@ function initKaboom() {
     global: true,
     fullscreen: true,
     debug: true,
+    background: [230, 216, 216],
   });
 }
 
