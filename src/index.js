@@ -14,9 +14,21 @@ loadSprite("oven", oven);
 // add([sprite("player1"), pos(120, 80),area(),body()]);
 // add([sprite("player2"), pos(80, 120)]);
 
+// playing platform
+add([
+  rect(width() * 0.75, 48),
+  pos(width() / 2, height() - 170),
+  outline(4),
+  origin("center"),
+  area(),
+  solid(),
+  color(127, 200, 255),
+]);
+
+// bottom platform, if the player touches this they die
 add([
   rect(width(), 48),
-  pos(0, height() - 200),
+  pos(0, height()),
   outline(4),
   area(),
   solid(),
@@ -25,8 +37,8 @@ add([
 
 // background
 add([
-  sprite("oven", { height: height(), width: width() }),
-  pos(width() / 2, height() / 2),
+  sprite("oven", { height: height() * 0.75, width: width() * 0.75 }),
+  pos(width() / 2, height() / 2 + 100),
   origin("center"),
   fixed(), // Keep the background position fixed even when the camera moves
 ]);
