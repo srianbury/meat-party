@@ -21,10 +21,16 @@ function mattsPart() {
 ])
 
 const times = add([
-  text("0"),
+  text(0),
   pos(900,5),
-  { value: 0 },
+  fixed(),
+  { time: 0 },
 ])
+
+times.onUpdate(() => {
+  times.time += dt()
+  times.text = times.time.toFixed(2)
+})
 
 }
 
