@@ -1,5 +1,31 @@
 function mattsPart() {
-  add([text("matt part")]);
+
+  //scene("game", ()=> {
+    add([
+        text("NEW GAME!"),
+        pos(1,500),
+        origin("left"),
+        color(255,0,0),
+        layer("UI"),
+        area(),
+        move(RIGHT, 500),
+        cleanup()
+        
+    ])
+ // })
+
+ const score = add([
+  text(0),
+  pos(12, 12),
+  fixed(),
+])
+
+const times = add([
+  text("0"),
+  pos(900,5),
+  { value: 0 },
+])
+
 }
 
 export { mattsPart };
