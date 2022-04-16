@@ -1,18 +1,20 @@
 function endScene(initPlayingField) {
   scene("end", ({ winner }) => {
-    const texts = [
-      `Player ${winner} wins!`,
-      "Click here to play again.",
-      "Or press [enter]",
-    ];
     initPlayingField();
-    add([text(texts.join("\n")), area(), scale(0.5, 0.5), "winnerText"]);
+    add([
+      text(
+        `Player ${winner} wins!\nGAME OVER\n [space] or click to play again!`
+      ),
+      pos(width() / 2, height() / 2 + 80),
+      scale(1),
+      origin("center"),
+    ]);
 
-    onClick("winnerText", () => {
+    // go back to game with space is pressed
+    onKeyPress("space", () => {
       go("fight");
     });
-
-    onKeyPress("enter", () => {
+    onClick(() => {
       go("fight");
     });
   });
