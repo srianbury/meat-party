@@ -14,6 +14,7 @@ function endScene(initPlayingField) {
     onKeyPress("space", () => {
       go("fight");
     });
+
     onClick(() => {
       go("fight");
     });
