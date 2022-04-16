@@ -50,18 +50,17 @@ function initPlayingField() {
 
   add([
     sprite("shelf"),
-    pos(width()/3, 500),
+    pos(width() / 3, 500),
     origin("center"),
     fixed(), // Keep the background position fixed even when the camera moves
   ]);
 
   add([
     sprite("shelf"),
-    pos(width()/1.5, 500),
+    pos(width() / 1.5, 500),
     origin("center"),
     fixed(), // Keep the background position fixed even when the camera moves
   ]);
-
 }
 
 export { initPlayingField };
