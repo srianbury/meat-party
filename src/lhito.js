@@ -26,6 +26,14 @@ function lhitosPart() {
     ]);
   }
 
+  add([
+    "item",
+    sprite("bean", { height: 40, width: 40 }),
+    pos(width() / 2, 80),
+    area(),
+    body(),
+  ]);
+
   //player1 movement
   const player1 = add([
     "player",
