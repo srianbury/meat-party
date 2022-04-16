@@ -98,6 +98,7 @@ function lhitosPart() {
     if (!winner) {
       winner = true;
       winnerText.text = "Player 2 Wins!";
+      go('lose');
     }
   });
 
@@ -171,6 +172,7 @@ function lhitosPart() {
     if (!winner) {
       winner = true;
       winnerText.text = "Player 1 Wins!";
+      go('lose');
     }
   });
 }

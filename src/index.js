@@ -11,6 +11,8 @@ loadSprite("player1", player1);
 loadSprite("player2", player2);
 loadSprite("oven", oven);
 
+//initialize scene after loading assets
+scene('game', () => {
 // add([sprite("player1"), pos(120, 80),area(),body()]);
 // add([sprite("player2"), pos(80, 120)]);
 
@@ -45,3 +47,24 @@ add([
 
 mattsPart();
 lhitosPart();
+
+scene("lose", ()=> {
+  add([
+    text('GAME OVER'),
+    pos(width() / 2, height() / 2 + 80),
+    scale(2),
+    origin("center"),
+]);
+
+// go back to game with space is pressed
+onKeyPress("space", () => go("game"));
+onClick(() => go("game"));
+
+})
+
+
+})
+
+
+
+go('game')

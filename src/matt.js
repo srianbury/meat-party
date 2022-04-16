@@ -12,7 +12,7 @@ function mattsPart() {
   ]);
   // })
 
-  const score = add([text(0), pos(12, 12), fixed()]);
+  //const score = add([text(0), pos(12, 12), fixed()]);
 
   const times = add([text(0), pos(900, 5), fixed(), { time: 0 }]);
 
