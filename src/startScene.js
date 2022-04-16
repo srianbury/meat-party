@@ -10,7 +10,7 @@ function startScene(initPlayingField) {
 
     add([
       text(startTexts.join("\n")),
-      pos(width() / 2, height() / 2 + 80),
+      pos(width() / 2, height() / 2),
       scale(0.5),
       origin("center"),
     ]);
