@@ -84,6 +84,11 @@ function lhitosPart() {
     player1.hurt(10);
   });
 
+  player1.onCollide("item", (b) => {
+    destroy(b);
+    player1.heal(10);
+  });
+
   player1.on("death", () => {
     destroy(player1);
     addKaboom(player1.pos);
@@ -155,6 +160,11 @@ function lhitosPart() {
   player2.onCollide(`bullet${PLAYER_1_ID}`, (b) => {
     destroy(b);
     player2.hurt(10);
+  });
+
+  player2.onCollide("item", (b) => {
+    destroy(b);
+    player2.heal(10);
   });
 
   player2.on("death", () => {
