@@ -26,13 +26,6 @@ function lhitosPart() {
     ]);
   }
 
-  const winnerText = add([
-    text(""),
-    pos(width() / 2 - 200, 32),
-    fixed(),
-    scale(0.5),
-  ]);
-
   //player1 movement
   const player1 = add([
     "player",
@@ -97,7 +90,7 @@ function lhitosPart() {
     destroyAll(`bullet${PLAYER_1_ID}`);
     if (!winner) {
       winner = true;
-      winnerText.text = "Player 2 Wins!";
+      go("end", { winner: "2" });
     }
   });
 
@@ -170,7 +163,7 @@ function lhitosPart() {
     destroyAll(`bullet${PLAYER_2_ID}`);
     if (!winner) {
       winner = true;
-      winnerText.text = "Player 1 Wins!";
+      go("end", { winner: "1" });
     }
   });
 }
