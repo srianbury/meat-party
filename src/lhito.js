@@ -165,7 +165,6 @@ function lhitosPart() {
   });
 
   player2.on("death", () => {
-    console.log({ player1 }, player1.exists);
     destroy(player2);
     addKaboom(player2.pos);
     destroyAll(`bullet${PLAYER_2_ID}`);
