@@ -12,59 +12,54 @@ loadSprite("player2", player2);
 loadSprite("oven", oven);
 
 //initialize scene after loading assets
-scene('game', () => {
-// add([sprite("player1"), pos(120, 80),area(),body()]);
-// add([sprite("player2"), pos(80, 120)]);
+scene("game", () => {
+  // add([sprite("player1"), pos(120, 80),area(),body()]);
+  // add([sprite("player2"), pos(80, 120)]);
 
-// playing platform
-add([
-  rect(width() * 0.75, 48),
-  pos(width() / 2, height() - 170),
-  outline(4),
-  origin("center"),
-  area(),
-  solid(),
-  color(127, 200, 255),
-]);
-
-// bottom platform, if the player touches this they die
-add([
-  rect(width(), 48),
-  pos(0, height()),
-  outline(4),
-  area(),
-  solid(),
-  color(127, 200, 255),
-]);
-
-// background
-add([
-  sprite("oven", { height: height() * 0.75, width: width() * 0.75 }),
-  pos(width() / 2, height() / 2 + 100),
-  origin("center"),
-  fixed(), // Keep the background position fixed even when the camera moves
-]);
-
-mattsPart();
-lhitosPart();
-
-scene("lose", ()=> {
+  // playing platform
   add([
-    text('GAME OVER'),
-    pos(width() / 2, height() / 2 + 80),
-    scale(2),
+    rect(width() * 0.75, 48),
+    pos(width() / 2, height() - 170),
+    outline(4),
     origin("center"),
-]);
+    area(),
+    solid(),
+    color(127, 200, 255),
+  ]);
 
-// go back to game with space is pressed
-onKeyPress("space", () => go("game"));
-onClick(() => go("game"));
+  // bottom platform, if the player touches this they die
+  add([
+    rect(width(), 48),
+    pos(0, height()),
+    outline(4),
+    area(),
+    solid(),
+    color(127, 200, 255),
+  ]);
 
-})
+  // background
+  add([
+    sprite("oven", { height: height() * 0.75, width: width() * 0.75 }),
+    pos(width() / 2, height() / 2 + 100),
+    origin("center"),
+    fixed(), // Keep the background position fixed even when the camera moves
+  ]);
 
+  mattsPart();
+  lhitosPart();
 
-})
+  scene("lose", () => {
+    add([
+      text("GAME OVER"),
+      pos(width() / 2, height() / 2 + 80),
+      scale(2),
+      origin("center"),
+    ]);
 
+    // go back to game with space is pressed
+    onKeyPress("space", () => go("game"));
+    onClick(() => go("game"));
+  });
+});
 
-
-go('game')
+go("game");
