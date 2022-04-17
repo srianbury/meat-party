@@ -5,14 +5,6 @@ function lhitosPart() {
     return players.map((player) => player.getPlayerStats()).join("\n\n");
   }
 
-  add([
-    "item",
-    sprite("bean", { height: 40, width: 40 }),
-    pos(width() / 2, 80),
-    area(),
-    body(),
-  ]);
-
   // player 2
   const player1 = new Player({
     sprite: sprite("player1", { height: 100, width: 100 }),
