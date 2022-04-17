@@ -2,7 +2,7 @@ const PLAYER_HEALTH = 100;
 const maxAmmo = 5;
 
 class Player {
-  constructor({ sprite, pos, playerId, controls, healthBarPos }) {
+  constructor({ sprite, pos, playerId, controls }) {
     this.player = add([
       "player",
       sprite,
@@ -51,17 +51,6 @@ class Player {
       if (isKeyDown(controls.shoot)) {
         this.ammoCheck(this.player.pos.add(40, 40), LEFT);
       }
-    });
-
-    this.healthBar = add([
-      text(this.getPlayerStats()),
-      healthBarPos, // make this an array or something??
-      fixed(),
-      scale(0.5),
-    ]);
-
-    this.healthBar.onUpdate(() => {
-      this.healthBar.text = this.getPlayerStats();
     });
 
     this.player.onCollide("item", (item) => {
@@ -123,9 +112,11 @@ class Player {
   }
 
   getPlayerStats() {
-    return [`HP: ${this.player.hp()}`, `Ammo ${this.player.curAmmo}`].join(
-      "\n"
-    );
+    return [
+      `Player: ${this.player.playerId}`,
+      `HP: ${this.player.hp()}`,
+      `Ammo ${this.player.curAmmo}`,
+    ].join("\n");
   }
 }
 

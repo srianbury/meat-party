@@ -1,6 +1,10 @@
 import { Player } from "./player";
 
 function lhitosPart() {
+  function getHealthStats(players) {
+    return players.map((player) => player.getPlayerStats()).join("\n\n");
+  }
+
   add([
     "item",
     sprite("bean", { height: 40, width: 40 }),
@@ -10,7 +14,7 @@ function lhitosPart() {
   ]);
 
   // player 2
-  new Player({
+  const player1 = new Player({
     sprite: sprite("player1", { height: 100, width: 100 }),
     pos: pos(150, 80),
     playerId: 1,
@@ -21,11 +25,10 @@ function lhitosPart() {
       right: "d",
       shoot: "tab",
     },
-    healthBarPos: pos(12, 32),
   });
 
   // player 2
-  new Player({
+  const player2 = new Player({
     sprite: sprite("player2", { height: 100, width: 100 }),
     pos: pos(width() - 300, 120),
     playerId: 2,
@@ -36,7 +39,18 @@ function lhitosPart() {
       right: "right",
       shoot: "enter",
     },
-    healthBarPos: pos(width() - 200, 32),
+  });
+
+  const players = [player1, player2];
+  const healthStats = add([
+    text(getHealthStats(players)),
+    pos(12, 32),
+    fixed(),
+    scale(0.5),
+  ]);
+
+  healthStats.onUpdate(() => {
+    healthStats.text = getHealthStats(players);
   });
 
   onCollide("player", "bullet", (player, bullet) => {
