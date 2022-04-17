@@ -13,48 +13,28 @@ function lhitosPart() {
     player.move(dir.scale(300));
   }
 
-  function reload(playerId) {
+  function reload(player) {
     burp();
-    if (playerId === "1") {
-      player1.curAmmo = maxAmmo;
-      player1.reloading = false;
-    } else if (playerId === "2") {
-      player2.curAmmo = maxAmmo;
-      player2.reloading = false;
+    player.curAmmo = maxAmmo;
+    player.reloading = false;
+  }
+
+  function ammoCheck(player, position, dir) {
+    if (player.curAmmo !== 0) {
+      spawnBullet(player, position, dir);
+      player.curAmmo = player.curAmmo - 1;
+    } else {
+      burp();
+      if (!player.reloading) {
+        wait(3, () => {
+          reload(player);
+        });
+      }
+      player.reloading = true;
     }
   }
 
-  function ammoCheck(playerId, position, dir) {
-    if (playerId === "1") {
-      if (player1.curAmmo !== 0) {
-        spawnBullet(playerId, position, dir);
-        player1.curAmmo = player1.curAmmo - 1;
-      } else {
-        burp();
-        if (!player1.reloading) {
-          wait(3, () => {
-            reload(playerId);
-          });
-        }
-        player1.reloading = true;
-      }
-    } else if (playerId === "2") {
-      if (player2.curAmmo !== 0) {
-        spawnBullet(playerId, position, dir);
-        player2.curAmmo = player2.curAmmo - 1;
-      } else {
-        burp();
-        if (!player2.reloading) {
-          wait(3, () => {
-            reload(playerId);
-          });
-        }
-        player2.reloading = true;
-      }
-    }
-  }
-
-  function spawnBullet(playerId, position, dir) {
+  function spawnBullet(player, position, dir) {
     add([
       rect(12, 48),
       area(),
@@ -64,8 +44,15 @@ function lhitosPart() {
       outline(4),
       move(dir, 1000),
       cleanup(),
-      `bullet${playerId}`, // strings here means a tag
+      "bullet", // strings here means a tag
+      {
+        ownerId: player.playerId,
+      },
     ]);
+  }
+
+  function getPlayerStats(player) {
+    return [`HP: ${player.hp()}`, `Ammo ${player.curAmmo}`].join("\n");
   }
 
   add([
@@ -88,6 +75,7 @@ function lhitosPart() {
     {
       curAmmo: maxAmmo,
       reloading: false,
+      playerId: 1,
     },
   ]);
 
@@ -97,13 +85,13 @@ function lhitosPart() {
 
   onKeyPress("w", () => {
     if (isKeyDown("tab")) {
-      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), UP);
+      ammoCheck(player1, player1.pos.add(40, 40), UP);
     }
   });
 
   onKeyPress("s", () => {
     if (isKeyDown("tab")) {
-      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), DOWN);
+      ammoCheck(player1, player1.pos.add(40, 40), DOWN);
     }
   });
 
@@ -113,7 +101,7 @@ function lhitosPart() {
 
   onKeyPress("d", () => {
     if (isKeyDown("tab")) {
-      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), RIGHT);
+      ammoCheck(player1, player1.pos.add(40, 40), RIGHT);
     }
   });
 
@@ -123,30 +111,36 @@ function lhitosPart() {
 
   onKeyPress("a", () => {
     if (isKeyDown("tab")) {
-      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), LEFT);
+      ammoCheck(player1, player1.pos.add(40, 40), LEFT);
     }
   });
 
-  const player1HealthBar = add([text(player1.hp()), pos(12, 32), fixed()]);
+  const player1HealthBar = add([
+    text(getPlayerStats(player1)),
+    pos(12, 32),
+    fixed(),
+    scale(0.5),
+  ]);
 
   player1HealthBar.onUpdate(() => {
-    player1HealthBar.text = player1.hp();
+    player1HealthBar.text = getPlayerStats(player1);
   });
 
-  player1.onCollide(`bullet${PLAYER_2_ID}`, (b) => {
-    destroy(b);
-    player1.hurt(10);
+  onCollide("player", "bullet", (player, bullet) => {
+    if (player.playerId !== bullet.ownerId) {
+      destroy(bullet);
+      player.hurt(10);
+    }
   });
 
-  player1.onCollide("item", (b) => {
-    destroy(b);
-    player1.heal(10);
+  onCollide("player", "item", (player, item) => {
+    destroy(item);
+    player.heal(10);
   });
 
   player1.on("death", () => {
     destroy(player1);
     addKaboom(player1.pos);
-    destroyAll(`bullet${PLAYER_1_ID}`);
     if (!winner) {
       winner = true;
       go("end", { winner: "2" });
@@ -166,6 +160,7 @@ function lhitosPart() {
     {
       curAmmo: maxAmmo,
       reloading: false,
+      playerId: 2,
     },
   ]);
 
@@ -175,13 +170,13 @@ function lhitosPart() {
 
   onKeyPress("up", () => {
     if (isKeyDown("enter")) {
-      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), UP);
+      ammoCheck(player2, player2.pos.add(40, 40), UP);
     }
   });
 
   onKeyPress("down", () => {
     if (isKeyDown("enter")) {
-      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), DOWN);
+      ammoCheck(player2, player2.pos.add(40, 40), DOWN);
     }
   });
 
@@ -191,7 +186,7 @@ function lhitosPart() {
 
   onKeyPress("right", () => {
     if (isKeyDown("enter")) {
-      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), RIGHT);
+      ammoCheck(player2, player2.pos.add(40, 40), RIGHT);
     }
   });
 
@@ -201,34 +196,24 @@ function lhitosPart() {
 
   onKeyPress("left", () => {
     if (isKeyDown("enter")) {
-      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), LEFT);
+      ammoCheck(player2, player2.pos.add(40, 40), LEFT);
     }
   });
 
   const player2HealthBar = add([
-    text(player1.hp()),
+    text(getPlayerStats(player2)),
     pos(width() - 200, 32),
     fixed(),
+    scale(0.5),
   ]);
 
   player2HealthBar.onUpdate(() => {
-    player2HealthBar.text = player2.hp();
-  });
-
-  player2.onCollide(`bullet${PLAYER_1_ID}`, (b) => {
-    destroy(b);
-    player2.hurt(10);
-  });
-
-  player2.onCollide("item", (b) => {
-    destroy(b);
-    player2.heal(10);
+    player2HealthBar.text = getPlayerStats(player2);
   });
 
   player2.on("death", () => {
     destroy(player2);
     addKaboom(player2.pos);
-    destroyAll(`bullet${PLAYER_2_ID}`);
     if (!winner) {
       winner = true;
       go("end", { winner: "1" });
