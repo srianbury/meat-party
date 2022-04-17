@@ -132,16 +132,16 @@ function lhitosPart() {
     player1.heal(10);
     wait(5, () => {
       getHeal();
-     });
-   });
+    });
+  });
 
-  player1.onCollide( "fire", (fire) => {
+  player1.onCollide("fire", (fire) => {
     destroy(fire);
     player1.curAmmo = player1.curAmmo + 1;
     wait(5, () => {
       getFire();
-     });
-   });
+    });
+  });
 
   player1.on("death", () => {
     destroy(player1);
@@ -221,16 +221,16 @@ function lhitosPart() {
     player2.heal(10);
     wait(5, () => {
       getHeal();
-     });
-   });
+    });
+  });
 
-  player2.onCollide( "fire", (fire) => {
+  player2.onCollide("fire", (fire) => {
     destroy(fire);
     player2.curAmmo = player2.curAmmo + 1;
     wait(5, () => {
       getFire();
-     });
-   });
+    });
+  });
 
   player2.on("death", () => {
     destroy(player2);
