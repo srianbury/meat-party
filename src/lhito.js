@@ -1,3 +1,5 @@
+import { getFire, getHeal } from "./items";
+
 function lhitosPart() {
   const PLAYER_HEALTH = 100;
   const PLAYER_1_ID = "1";
@@ -54,14 +56,6 @@ function lhitosPart() {
   function getPlayerStats(player) {
     return [`HP: ${player.hp()}`, `Ammo ${player.curAmmo}`].join("\n");
   }
-
-  add([
-    "item",
-    sprite("bean", { height: 40, width: 40 }),
-    pos(width() / 2, 80),
-    area(),
-    body(),
-  ]);
 
   //player1 movement
   const player1 = add([
@@ -136,7 +130,18 @@ function lhitosPart() {
   player1.onCollide("item", (item) => {
     destroy(item);
     player1.heal(10);
-  });
+    wait(5, () => {
+      getHeal();
+     });
+   });
+
+  player1.onCollide( "fire", (fire) => {
+    destroy(fire);
+    player1.curAmmo = player1.curAmmo + 1;
+    wait(5, () => {
+      getFire();
+     });
+   });
 
   player1.on("death", () => {
     destroy(player1);
@@ -214,7 +219,18 @@ function lhitosPart() {
   player2.onCollide("item", (item) => {
     destroy(item);
     player2.heal(10);
-  });
+    wait(5, () => {
+      getHeal();
+     });
+   });
+
+  player2.onCollide( "fire", (fire) => {
+    destroy(fire);
+    player2.curAmmo = player2.curAmmo + 1;
+    wait(5, () => {
+      getFire();
+     });
+   });
 
   player2.on("death", () => {
     destroy(player2);
