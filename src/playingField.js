@@ -1,3 +1,5 @@
+import { getFire, getHeal } from "./items";
+
 function initPlayingField() {
   // playing platform
   add([
@@ -49,6 +51,9 @@ function initPlayingField() {
     area(),
     solid(),
   ]);
+
+  getFire();
+  getHeal();
 }
 
 export { initPlayingField };
