@@ -133,9 +133,9 @@ function lhitosPart() {
     }
   });
 
-  onCollide("player", "item", (player, item) => {
+  player1.onCollide("item", (item) => {
     destroy(item);
-    player.heal(10);
+    player1.heal(10);
   });
 
   player1.on("death", () => {
@@ -209,6 +209,11 @@ function lhitosPart() {
 
   player2HealthBar.onUpdate(() => {
     player2HealthBar.text = getPlayerStats(player2);
+  });
+
+  player2.onCollide("item", (item) => {
+    destroy(item);
+    player2.heal(10);
   });
 
   player2.on("death", () => {
