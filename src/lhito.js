@@ -13,37 +13,41 @@ function lhitosPart() {
     player.move(dir.scale(300));
   }
 
-  function reload(playerId){
-    burp()
-    if(playerId === "1"){
-      player1.curAmmo = maxAmmo
+  function reload(playerId) {
+    burp();
+    if (playerId === "1") {
+      player1.curAmmo = maxAmmo;
       player1.reloading = false;
-    }else if(playerId === "2"){
-      player2.curAmmo = maxAmmo
+    } else if (playerId === "2") {
+      player2.curAmmo = maxAmmo;
       player2.reloading = false;
     }
   }
 
-  function ammoCheck(playerId, position, dir){
-    if(playerId === "1"){
-      if(player1.curAmmo !== 0){
+  function ammoCheck(playerId, position, dir) {
+    if (playerId === "1") {
+      if (player1.curAmmo !== 0) {
         spawnBullet(playerId, position, dir);
-        player1.curAmmo = player1.curAmmo - 1
-      }else{
-        burp()
-        if(!player1.reloading){
-          wait(3,() => {reload(playerId)});
+        player1.curAmmo = player1.curAmmo - 1;
+      } else {
+        burp();
+        if (!player1.reloading) {
+          wait(3, () => {
+            reload(playerId);
+          });
         }
         player1.reloading = true;
       }
-    }else if(playerId === "2"){
-      if(player2.curAmmo !== 0){
+    } else if (playerId === "2") {
+      if (player2.curAmmo !== 0) {
         spawnBullet(playerId, position, dir);
-        player2.curAmmo = player2.curAmmo - 1
-      }else{
-        burp()
-        if(!player2.reloading){
-          wait(3,() => {reload(playerId)});
+        player2.curAmmo = player2.curAmmo - 1;
+      } else {
+        burp();
+        if (!player2.reloading) {
+          wait(3, () => {
+            reload(playerId);
+          });
         }
         player2.reloading = true;
       }
@@ -51,7 +55,7 @@ function lhitosPart() {
   }
 
   function spawnBullet(playerId, position, dir) {
-      add([
+    add([
       rect(12, 48),
       area(),
       pos(position),
@@ -83,8 +87,8 @@ function lhitosPart() {
     health(PLAYER_HEALTH),
     {
       curAmmo: maxAmmo,
-      reloading: false
-    }
+      reloading: false,
+    },
   ]);
 
   onKeyPress("w", () => {
@@ -166,8 +170,8 @@ function lhitosPart() {
     scale(vec2(1)),
     {
       curAmmo: maxAmmo,
-      reloading: false
-    }
+      reloading: false,
+    },
   ]);
 
   onKeyPress("up", () => {
