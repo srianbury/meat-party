@@ -93,11 +93,6 @@ function lhitosPart() {
 
   onKeyPress("w", () => {
     if (isKeyDown("tab")) {
-      // if(player1.curAmmo !== 0){
-      //   spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), UP);
-      // }else{
-      //   reload(PLAYER_1_ID);
-      // }
       ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), UP);
     }
   });
