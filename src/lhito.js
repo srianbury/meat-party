@@ -14,7 +14,7 @@ function lhitosPart() {
   }
 
   function reload(player) {
-    burp();
+    play("reloaded");
     player.curAmmo = maxAmmo;
     player.reloading = false;
   }
