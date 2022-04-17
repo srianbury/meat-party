@@ -51,6 +51,10 @@ function lhitosPart() {
     ]);
   }
 
+  function getPlayerStats(player) {
+    return [`HP: ${player.hp()}`, `Ammo ${player.curAmmo}`].join("\n");
+  }
+
   add([
     "item",
     sprite("bean", { height: 40, width: 40 }),
@@ -111,10 +115,15 @@ function lhitosPart() {
     }
   });
 
-  const player1HealthBar = add([text(player1.hp()), pos(12, 32), fixed()]);
+  const player1HealthBar = add([
+    text(getPlayerStats(player1)),
+    pos(12, 32),
+    fixed(),
+    scale(0.5),
+  ]);
 
   player1HealthBar.onUpdate(() => {
-    player1HealthBar.text = player1.hp();
+    player1HealthBar.text = getPlayerStats(player1);
   });
 
   onCollide("player", "bullet", (player, bullet) => {
@@ -192,13 +201,14 @@ function lhitosPart() {
   });
 
   const player2HealthBar = add([
-    text(player1.hp()),
+    text(getPlayerStats(player2)),
     pos(width() - 200, 32),
     fixed(),
+    scale(0.5),
   ]);
 
   player2HealthBar.onUpdate(() => {
-    player2HealthBar.text = player2.hp();
+    player2HealthBar.text = getPlayerStats(player2);
   });
 
   player2.on("death", () => {
