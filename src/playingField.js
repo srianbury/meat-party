@@ -20,26 +20,6 @@ function initPlayingField() {
     color(127, 200, 255),
   ]);
 
-  //shelf platform
-  add([
-    rect(220, 2),
-    pos(530, 500),
-    outline(4),
-    area(),
-    solid(),
-    color(127, 200, 255),
-  ]);
-
-  //2nd platform
-  add([
-    rect(220, 2),
-    pos(1170, 500),
-    outline(4),
-    area(),
-    solid(),
-    color(127, 200, 255),
-  ]);
-
   // background
   add([
     sprite("oven", { height: height() * 0.75, width: width() * 0.75 }),
@@ -48,18 +28,26 @@ function initPlayingField() {
     fixed(), // Keep the background position fixed even when the camera moves
   ]);
 
+  // left shelf platform
   add([
     sprite("shelf"),
     pos(width() / 3, 500),
     origin("center"),
     fixed(), // Keep the background position fixed even when the camera moves
+    scale(8),
+    area(),
+    solid(),
   ]);
 
+  // right shelf platform
   add([
     sprite("shelf"),
     pos(width() / 1.5, 500),
     origin("center"),
     fixed(), // Keep the background position fixed even when the camera moves
+    scale(8),
+    area(),
+    solid(),
   ]);
 }
 

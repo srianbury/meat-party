@@ -3,7 +3,7 @@ import player1 from "../public/sprites/player1.png";
 import player2 from "../public/sprites/player2.png";
 import oven from "../public/sprites/oven.png";
 import bean from "../public/sprites/bean.png";
-import shelf from "../public/sprites/shelf.png";
+import shelf from "../public/sprites/shelf2.png";
 import { startScene } from "./startScene";
 import { fightScene } from "./fightScene";
 import { endScene } from "./endScene";
