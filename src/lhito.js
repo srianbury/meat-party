@@ -3,6 +3,7 @@ function lhitosPart() {
   const PLAYER_1_ID = "1";
   const PLAYER_2_ID = "2";
   let winner = false;
+  const maxAmmo = 5;
 
   function doJump(player) {
     player.jump();
@@ -12,8 +13,45 @@ function lhitosPart() {
     player.move(dir.scale(300));
   }
 
+  function reload(playerId){
+    burp()
+    if(playerId === "1"){
+      player1.curAmmo = maxAmmo
+      player1.reloading = false;
+    }else if(playerId === "2"){
+      player2.curAmmo = maxAmmo
+      player2.reloading = false;
+    }
+  }
+
+  function ammoCheck(playerId, position, dir){
+    if(playerId === "1"){
+      if(player1.curAmmo !== 0){
+        spawnBullet(playerId, position, dir);
+        player1.curAmmo = player1.curAmmo - 1
+      }else{
+        burp()
+        if(!player1.reloading){
+          wait(3,() => {reload(playerId)});
+        }
+        player1.reloading = true;
+      }
+    }else if(playerId === "2"){
+      if(player2.curAmmo !== 0){
+        spawnBullet(playerId, position, dir);
+        player2.curAmmo = player2.curAmmo - 1
+      }else{
+        burp()
+        if(!player2.reloading){
+          wait(3,() => {reload(playerId)});
+        }
+        player2.reloading = true;
+      }
+    }
+  }
+
   function spawnBullet(playerId, position, dir) {
-    add([
+      add([
       rect(12, 48),
       area(),
       pos(position),
@@ -43,6 +81,10 @@ function lhitosPart() {
     area(),
     body(),
     health(PLAYER_HEALTH),
+    {
+      curAmmo: maxAmmo,
+      reloading: false
+    }
   ]);
 
   onKeyPress("w", () => {
@@ -51,13 +93,18 @@ function lhitosPart() {
 
   onKeyPress("w", () => {
     if (isKeyDown("tab")) {
-      spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), UP);
+      // if(player1.curAmmo !== 0){
+      //   spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), UP);
+      // }else{
+      //   reload(PLAYER_1_ID);
+      // }
+      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), UP);
     }
   });
 
   onKeyPress("s", () => {
     if (isKeyDown("tab")) {
-      spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), DOWN);
+      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), DOWN);
     }
   });
 
@@ -67,7 +114,7 @@ function lhitosPart() {
 
   onKeyPress("d", () => {
     if (isKeyDown("tab")) {
-      spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), RIGHT);
+      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), RIGHT);
     }
   });
 
@@ -77,7 +124,7 @@ function lhitosPart() {
 
   onKeyPress("a", () => {
     if (isKeyDown("tab")) {
-      spawnBullet(PLAYER_1_ID, player1.pos.add(40, 40), LEFT);
+      ammoCheck(PLAYER_1_ID, player1.pos.add(40, 40), LEFT);
     }
   });
 
@@ -110,13 +157,17 @@ function lhitosPart() {
   //player2 movement
   const player2 = add([
     "player",
-    "2",
+    PLAYER_2_ID,
     sprite("player2", { height: 100, width: 100 }),
     pos(width() - 300, 120),
     area(),
     body(),
     health(PLAYER_HEALTH),
     scale(vec2(1)),
+    {
+      curAmmo: maxAmmo,
+      reloading: false
+    }
   ]);
 
   onKeyPress("up", () => {
@@ -125,13 +176,13 @@ function lhitosPart() {
 
   onKeyPress("up", () => {
     if (isKeyDown("enter")) {
-      spawnBullet(PLAYER_2_ID, player2.pos.add(40, 40), UP);
+      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), UP);
     }
   });
 
   onKeyPress("down", () => {
     if (isKeyDown("enter")) {
-      spawnBullet(PLAYER_2_ID, player2.pos.add(40, 40), DOWN);
+      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), DOWN);
     }
   });
 
@@ -141,7 +192,7 @@ function lhitosPart() {
 
   onKeyPress("right", () => {
     if (isKeyDown("enter")) {
-      spawnBullet(PLAYER_2_ID, player2.pos.add(40, 40), RIGHT);
+      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), RIGHT);
     }
   });
 
@@ -151,7 +202,7 @@ function lhitosPart() {
 
   onKeyPress("left", () => {
     if (isKeyDown("enter")) {
-      spawnBullet(PLAYER_2_ID, player2.pos.add(40, 40), LEFT);
+      ammoCheck(PLAYER_2_ID, player2.pos.add(40, 40), LEFT);
     }
   });
 
