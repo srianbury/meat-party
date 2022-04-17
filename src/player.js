@@ -58,9 +58,9 @@ class Player {
     this.player.onCollide("item", (item) => {
       destroy(item);
       this.player.heal(10);
-      wait(3, ()=>{
+      wait(3, () => {
         getHeal();
-      })
+      });
     });
 
     this.player.onCollide("fire", (fire) => {
@@ -68,7 +68,7 @@ class Player {
       this.player.curAmmo += 1;
       wait(3, () => {
         getFire();
-      })
+      });
     });
 
     this.player.on("death", () => {
