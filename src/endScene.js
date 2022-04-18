@@ -3,7 +3,7 @@ function endScene(initPlayingField) {
     initPlayingField();
     add([
       text(
-        `Player ${winner} wins!\nGAME OVER\n [space] or click to play again!`
+        `Player ${winner} wins!\nGAME OVER\n [space] or click to play again! \n Hit Escape to return to the main menu`
       ),
       pos(width() / 2, height() / 2 + 80),
       scale(1),
@@ -18,6 +18,12 @@ function endScene(initPlayingField) {
     onClick(() => {
       go("fight");
     });
+    
+    //return to the main menu when escape is pressed
+    onKeyPress("escape", () => {
+      go("mainMenu");
+    });    
+
   });
 }
 

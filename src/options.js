@@ -9,6 +9,18 @@ function options() {
       origin("center"),
     ]);
 
+    //exit button
+    add([
+        "Exit",
+        circle(40),
+        pos(width() - 50, height() / 20),
+        scale(1),
+        area(),
+        color(255, 0, 0),
+        origin("center"),
+        text("X"),
+      ]);
+
     //procedurally creates all the tabs for the options bar
     optionsBarText.forEach((option, index) => {
       console.log("xposition", index * (width() * 0.01));
@@ -27,6 +39,7 @@ function options() {
 
     //can look into procedurally generating onclicks for the options bar and maybe store all of the functions and adds that will display in another array of objects
     onClick(optionsBarText[0], () => burp());
+    onClick("Exit", () => go("mainMenu"));
   });
 }
 
