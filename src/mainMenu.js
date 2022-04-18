@@ -32,18 +32,17 @@ function mainMenu() {
     add([
       "optionsButton",
       rect(width() * 0.1, 48),
-      pos(width() / 2, (height() / 1.3)),
+      pos(width() / 2, height() / 1.3),
       outline(4),
       area(),
       origin("center"),
       color(0, 255, 255),
-      text("Options")
+      text("Options"),
     ]);
 
     onClick("startButton", () => go("start"));
     onClick("optionsButton", () => go("options"));
-          
-    })
+  });
 }
 
 export { mainMenu };
