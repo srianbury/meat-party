@@ -1,4 +1,4 @@
-function getFire() {
+export function getFire() {
   //comment
   add([
     "fire",
@@ -9,7 +9,7 @@ function getFire() {
   ]);
 }
 
-function getHeal() {
+export function getHeal() {
   add([
     "item",
     sprite("bean", { height: 40, width: 40 }),
@@ -19,4 +19,18 @@ function getHeal() {
   ]);
 }
 
-export { getFire, getHeal };
+export function getBanana() {
+  add([
+    "banana",
+    sprite("banana", { height: 40, width: 40 }),
+    pos(width() * 0.4, 80),
+    area(),
+    body(),
+    {
+      curAmmo: 10,
+      damage: 25,
+      reloadTime: 10,
+      maxAmmo: 10,
+    },
+  ]);
+}

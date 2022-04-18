@@ -1,9 +1,12 @@
 import { Player } from "./player";
+import { getBanana } from "./items";
 
 function lhitosPart() {
   function getHealthStats(players) {
     return players.map((player) => player.getPlayerStats()).join("\n\n");
   }
+
+  getBanana();
 
   // player 2
   const player1 = new Player({

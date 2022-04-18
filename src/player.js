@@ -72,11 +72,21 @@ class Player {
       });
     });
 
+    this.player.onCollide("banana", (banana) => {
+      destroy(banana);
+      const { curAmmo, damage, reloadTime, maxAmmo } = banana;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo });
+    });
+
     this.player.on("death", () => {
       destroy(this.player);
       addKaboom(this.player.pos);
       go("end", { winner: this.player.playerId === 1 ? "2" : "1" }); // need to figure this one out
     });
+  }
+
+  setWeapon(options) {
+    this.weapon = new BasicWeapon(options);
   }
 
   doJump() {
