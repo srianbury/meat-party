@@ -18,12 +18,11 @@ function endScene(initPlayingField) {
     onClick(() => {
       go("fight");
     });
-    
+
     //return to the main menu when escape is pressed
     onKeyPress("escape", () => {
       go("mainMenu");
-    });    
-
+    });
   });
 }
 
