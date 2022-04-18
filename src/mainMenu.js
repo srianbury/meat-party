@@ -42,9 +42,7 @@ function mainMenu() {
           ]);
 
           onClick("startButton", () => go("start"));
-          //add this after creating an options scene
-        //   onClick("optionsButton", () => go("options"));
-          onClick("optionsButton", () => burp());
+          onClick("optionsButton", () => go("options"));
           
     })
 }

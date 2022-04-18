@@ -12,6 +12,7 @@ import { fightScene } from "./fightScene";
 import { endScene } from "./endScene";
 import { initPlayingField } from "./playingField";
 import {mainMenu} from "./mainMenu";
+import {options} from "./options";
 
 initKaboom();
 
@@ -25,6 +26,7 @@ loadSprite("banana", banana);
 loadSound("reloaded", reloaded);
 
 mainMenu();
+options();
 startScene(initPlayingField);
 fightScene(initPlayingField);
 endScene(initPlayingField);
