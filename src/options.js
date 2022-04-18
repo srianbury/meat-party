@@ -216,15 +216,15 @@ function options() {
 
     //exit button
     add([
-        "Exit",
-        circle(40),
-        pos(width() - 50, height() / 20),
-        scale(1),
-        area(),
-        color(255, 0, 0),
-        origin("center"),
-        text("X"),
-      ]);
+      "Exit",
+      circle(40),
+      pos(width() - 50, height() / 20),
+      scale(1),
+      area(),
+      color(255, 0, 0),
+      origin("center"),
+      text("X"),
+    ]);
 
     //procedurally creates all the tabs for the options bar
     optionsBarText.forEach((option, index) => {
