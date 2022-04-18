@@ -48,7 +48,7 @@ function lhitosPart() {
   onCollide("player", "bullet", (player, bullet) => {
     if (player.playerId !== bullet.ownerId) {
       destroy(bullet);
-      player.hurt(10);
+      player.hurt(bullet.damage);
     }
   });
 }
