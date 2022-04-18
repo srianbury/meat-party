@@ -2,12 +2,13 @@ class BasicWeapon {
   /*
    * player: who the weapon belongs to
    */
-  constructor(curAmmo = 5, damage = 10, reloadTime = 3, maxAmmo = 5) {
-    this.curAmmo = curAmmo;
+  constructor(options = {}) {
+    const { curAmmo, damage, reloadTime, maxAmmo } = options;
+    this.curAmmo = curAmmo || 5;
     this.reloading = false;
-    this.damage = damage;
-    this.reloadTime = reloadTime;
-    this.maxAmmo = maxAmmo;
+    this.damage = damage || 10;
+    this.reloadTime = reloadTime || 3;
+    this.maxAmmo = maxAmmo || 5;
   }
 
   spawnBullet(player, dir) {
