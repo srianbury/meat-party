@@ -1,3 +1,4 @@
+import { BasicWeapon } from "./weapons";
 import { getFire, getHeal } from "./items";
 
 const PLAYER_HEALTH = 100;
@@ -13,11 +14,11 @@ class Player {
       body(),
       health(PLAYER_HEALTH),
       {
-        curAmmo: maxAmmo,
-        reloading: false,
         playerId: playerId,
       },
     ]);
+
+    this.weapon = new BasicWeapon();
 
     onKeyPress(controls.up, () => {
       this.doJump();
@@ -25,13 +26,13 @@ class Player {
 
     onKeyPress(controls.up, () => {
       if (isKeyDown(controls.shoot)) {
-        this.ammoCheck(this.player.pos.add(40, 40), UP);
+        this.weapon.ammoCheck(this.player, UP);
       }
     });
 
     onKeyPress(controls.down, () => {
       if (isKeyDown(controls.shoot)) {
-        this.ammoCheck(this.player.pos.add(40, 40), DOWN);
+        this.weapon.ammoCheck(this.player, DOWN);
       }
     });
 
@@ -41,7 +42,7 @@ class Player {
 
     onKeyPress(controls.right, () => {
       if (isKeyDown(controls.shoot)) {
-        this.ammoCheck(this.player.pos.add(40, 40), RIGHT);
+        this.weapon.ammoCheck(this.player, RIGHT);
       }
     });
 
@@ -51,7 +52,7 @@ class Player {
 
     onKeyPress(controls.left, () => {
       if (isKeyDown(controls.shoot)) {
-        this.ammoCheck(this.player.pos.add(40, 40), LEFT);
+        this.weapon.ammoCheck(this.player, LEFT);
       }
     });
 
@@ -65,7 +66,7 @@ class Player {
 
     this.player.onCollide("fire", (fire) => {
       destroy(fire);
-      this.player.curAmmo += 1;
+      this.weapon.curAmmo += 1;
       wait(3, () => {
         getFire();
       });
@@ -86,49 +87,11 @@ class Player {
     this.player.move(dir.scale(300));
   }
 
-  spawnBullet(position, dir) {
-    add([
-      rect(12, 48),
-      area(),
-      pos(position),
-      origin("center"),
-      color(127, 127, 255),
-      outline(4),
-      move(dir, 1000),
-      cleanup(),
-      "bullet", // strings here means a tag
-      {
-        ownerId: this.player.playerId,
-      },
-    ]);
-  }
-
-  ammoCheck(position, dir) {
-    if (this.player.curAmmo !== 0) {
-      this.spawnBullet(position, dir);
-      this.player.curAmmo = this.player.curAmmo - 1;
-    } else {
-      burp();
-      if (!this.player.reloading) {
-        wait(3, () => {
-          this.reload();
-        });
-      }
-      this.player.reloading = true;
-    }
-  }
-
-  reload() {
-    play("reloaded");
-    this.player.curAmmo = maxAmmo;
-    this.player.reloading = false;
-  }
-
   getPlayerStats() {
     return [
       `Player: ${this.player.playerId}`,
       `HP: ${this.player.hp()}`,
-      `Ammo ${this.player.curAmmo}`,
+      `Ammo ${this.weapon.curAmmo}`,
     ].join("\n");
   }
 }
