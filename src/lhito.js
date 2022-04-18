@@ -1,4 +1,5 @@
 import { Player } from "./player";
+import { playerControls } from "./options";
 import { getBanana } from "./items";
 
 function lhitosPart() {
