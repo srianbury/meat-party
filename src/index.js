@@ -11,7 +11,7 @@ import { startScene } from "./startScene";
 import { fightScene } from "./fightScene";
 import { endScene } from "./endScene";
 import { initPlayingField } from "./playingField";
-import {mainMenu} from "./mainMenu";
+import { mainMenu } from "./mainMenu";
 
 initKaboom();
 
