@@ -1,5 +1,5 @@
 import { BasicWeapon } from "./weapons";
-import { getFire, getHeal } from "./items";
+//import { getFire, getHeal } from "./items";
 
 const PLAYER_HEALTH = 100;
 const maxAmmo = 5;
@@ -56,26 +56,27 @@ class Player {
       }
     });
 
-    this.player.onCollide("item", (item) => {
-      destroy(item);
-      this.player.heal(10);
-      wait(3, () => {
-        getHeal();
-      });
+    this.player.onCollide("heal", (heal) => {
+      destroy(heal);
+      this.player.heal(20);
     });
 
     this.player.onCollide("fire", (fire) => {
       destroy(fire);
-      this.weapon.curAmmo += 1;
-      wait(3, () => {
-        getFire();
-      });
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = fire;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
     });
 
     this.player.onCollide("banana", (banana) => {
       destroy(banana);
-      const { curAmmo, damage, reloadTime, maxAmmo } = banana;
-      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo });
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = banana;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
+    });
+
+    this.player.action(() => {
+      if (this.player.pos.y > height()) {
+        this.player.hurt(PLAYER_HEALTH);
+      }
     });
 
     this.player.on("death", () => {

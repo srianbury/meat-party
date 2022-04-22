@@ -1,17 +1,32 @@
 import { Player } from "./player";
 import { getBanana } from "./items";
+import { getFire } from "./items";
+import { getHeal } from "./items";
 
 function lhitosPart() {
   function getHealthStats(players) {
     return players.map((player) => player.getPlayerStats()).join("\n\n");
   }
 
-  getBanana();
+  loop(randi(3, 10), () => {
+    var rndInt = 0;
+    var rndInt = randi(0, 3);
+    console.log(rndInt);
+
+    if (rndInt == 0) {
+      getFire();
+    } else if (rndInt == 1) {
+      getBanana();
+    } else {
+      getHeal();
+    }
+    var rndInt = 0;
+  });
 
   // player 2
   const player1 = new Player({
-    sprite: sprite("player1", { height: 100, width: 100 }),
-    pos: pos(150, 80),
+    sprite: sprite("steak", { height: 100, width: 100 }),
+    pos: pos(300, 80),
     playerId: 1,
     controls: {
       up: "w",
@@ -24,8 +39,8 @@ function lhitosPart() {
 
   // player 2
   const player2 = new Player({
-    sprite: sprite("player2", { height: 100, width: 100 }),
-    pos: pos(width() - 300, 120),
+    sprite: sprite("chicken", { height: 100, width: 100 }),
+    pos: pos(width() - 400, 120),
     playerId: 2,
     controls: {
       up: "up",
