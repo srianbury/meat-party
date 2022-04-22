@@ -3,7 +3,7 @@ import { getFire, getHeal } from "./items";
 function initPlayingField() {
   // playing platform
   add([
-    rect(width() * 0.75, 48),
+    rect(width() * 0.75, 1),
     pos(width() / 2, height() - 170),
     outline(4),
     origin("center"),
@@ -13,14 +13,14 @@ function initPlayingField() {
   ]);
 
   // bottom platform, if the player touches this they die
-  add([
-    rect(width(), 48),
-    pos(0, height()),
-    outline(4),
-    area(),
-    solid(),
-    color(127, 200, 255),
-  ]);
+ // add([
+ //   rect(width(), 48),
+ //   pos(0, height()),
+ //   outline(4),
+ //   area(),
+ //   solid(),
+ //   color(127, 200, 255),
+ // ]);
 
   // background
   add([
@@ -51,9 +51,6 @@ function initPlayingField() {
     area(),
     solid(),
   ]);
-
-  getFire();
-  getHeal();
 }
 
 export { initPlayingField };

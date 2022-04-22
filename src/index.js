@@ -13,6 +13,7 @@ import Chopper from "../public/sprites/Chopper.png";
 import Pan from "../public/sprites/Frying Pan.png";
 import Salt from "../public/sprites/Salt.png";
 import Steak from "../public/sprites/Steak.png";
+import fireball from "../public/sprites/fireball.png";
 
 import { startScene } from "./startScene";
 import { fightScene } from "./fightScene";
@@ -34,6 +35,7 @@ loadSprite("chopper", Chopper);
 loadSprite("pan", Pan);
 loadSprite("salt", Salt);
 loadSprite("steak", Steak);
+loadSprite("fireball", fireball);
 loadSound("reloaded", reloaded);
 
 startScene(initPlayingField);
