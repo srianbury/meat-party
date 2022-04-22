@@ -21,7 +21,7 @@ class BasicWeapon {
       origin("center"),
       color(127, 127, 255),
       outline(4),
-      move(dir, 1000),
+      move(dir, 1000), //
       cleanup(),
       "bullet", // strings here means a tag
       {
