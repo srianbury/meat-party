@@ -1,31 +1,27 @@
 import { Player } from "./player";
 import { getBanana } from "./items";
-import {getFire} from "./items";
-import {getHeal} from "./items";
-
+import { getFire } from "./items";
+import { getHeal } from "./items";
 
 function lhitosPart() {
   function getHealthStats(players) {
     return players.map((player) => player.getPlayerStats()).join("\n\n");
   }
-  
-  loop(randi(3,10), ()=>{
+
+  loop(randi(3, 10), () => {
     var rndInt = 0;
-    var rndInt = randi(0,3);
+    var rndInt = randi(0, 3);
     console.log(rndInt);
 
-    if (rndInt==0){
+    if (rndInt == 0) {
       getFire();
-    }
-    else if  (rndInt==1){
+    } else if (rndInt == 1) {
       getBanana();
-    }
-    else {
+    } else {
       getHeal();
     }
     var rndInt = 0;
   });
-  
 
   // player 2
   const player1 = new Player({

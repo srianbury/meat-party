@@ -13,14 +13,14 @@ function initPlayingField() {
   ]);
 
   // bottom platform, if the player touches this they die
- // add([
- //   rect(width(), 48),
- //   pos(0, height()),
- //   outline(4),
- //   area(),
- //   solid(),
- //   color(127, 200, 255),
- // ]);
+  // add([
+  //   rect(width(), 48),
+  //   pos(0, height()),
+  //   outline(4),
+  //   area(),
+  //   solid(),
+  //   color(127, 200, 255),
+  // ]);
 
   // background
   add([

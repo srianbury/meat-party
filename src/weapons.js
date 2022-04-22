@@ -3,7 +3,7 @@ class BasicWeapon {
    * player: who the weapon belongs to
    */
   constructor(options = {}) {
-    const { curAmmo, damage, reloadTime, maxAmmo} = options;
+    const { curAmmo, damage, reloadTime, maxAmmo } = options;
     this.curAmmo = curAmmo || 5;
     this.reloading = false;
     this.damage = damage || 10;
@@ -14,7 +14,7 @@ class BasicWeapon {
 
   spawnBullet(player, dir) {
     add([
-     //sprite,
+      //sprite,
       circle(16),
       area({ width: 20, height: 40 }),
       pos(player.pos.add(40, 40)),

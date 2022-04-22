@@ -69,13 +69,13 @@ class Player {
 
     this.player.onCollide("banana", (banana) => {
       destroy(banana);
-      const { curAmmo, damage, reloadTime, maxAmmo , sprite} = banana;
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = banana;
       this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
     });
 
-    this.player.action(() =>{
-      if(this.player.pos.y > height()){
-        this.player.hurt(PLAYER_HEALTH)
+    this.player.action(() => {
+      if (this.player.pos.y > height()) {
+        this.player.hurt(PLAYER_HEALTH);
       }
     });
 
