@@ -1,5 +1,6 @@
 import { Player } from "./player";
-import { playerControls } from "./options";
+import { chosenPlayerSprites } from "./Scenes/characterSelectScene";
+// import { playerControls } from "./options";
 import { getBanana } from "./items";
 
 function lhitosPart() {
@@ -11,10 +12,15 @@ function lhitosPart() {
 
   // player 2
   const player1 = new Player({
-    sprite: sprite("player1", { height: 100, width: 100 }),
+    sprite: sprite("player" + chosenPlayerSprites[0], { height: 100, width: 100 }),
     pos: pos(150, 80),
     playerId: 1,
     controls: {
+      // up: playerControls[0][0],
+      // down: playerControls[0][1],
+      // left: playerControls[0][2],
+      // right: playerControls[0][3],
+      // shoot: playerControls[0][4],
       up: "w",
       down: "s",
       left: "a",
@@ -25,7 +31,7 @@ function lhitosPart() {
 
   // player 2
   const player2 = new Player({
-    sprite: sprite("player2", { height: 100, width: 100 }),
+    sprite: sprite("player" + chosenPlayerSprites[1], { height: 100, width: 100 }),
     pos: pos(width() - 300, 120),
     playerId: 2,
     controls: {

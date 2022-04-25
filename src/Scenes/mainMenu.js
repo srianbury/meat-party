@@ -29,19 +29,19 @@ function mainMenu() {
     ]);
 
     //options button
-    add([
-      "optionsButton",
-      rect(width() * 0.1, 48),
-      pos(width() / 2, height() / 1.3),
-      outline(4),
-      area(),
-      origin("center"),
-      color(0, 255, 255),
-      text("Options"),
-    ]);
+    // add([
+    //   "optionsButton",
+    //   rect(width() * 0.1, 48),
+    //   pos(width() / 2, height() / 1.3),
+    //   outline(4),
+    //   area(),
+    //   origin("center"),
+    //   color(0, 255, 255),
+    //   text("Options"),
+    // ]);
 
-    onClick("startButton", () => go("start"));
-    onClick("optionsButton", () => go("options"));
+    onClick("startButton", () => go("characterSelect"));
+    // onClick("optionsButton", () => go("options"));
   });
 }
 
