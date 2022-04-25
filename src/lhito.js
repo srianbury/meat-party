@@ -28,7 +28,7 @@ function lhitosPart() {
   // player 2
   const player1 = new Player({
     sprite: sprite("player" + chosenPlayerSprites[0], { height: 100, width: 100 }),
-    pos: pos(150, 80),
+    pos: pos(300, 80),
     playerId: 1,
     controls: {
       // up: playerControls[0][0],
