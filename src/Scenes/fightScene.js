@@ -1,5 +1,5 @@
-import { lhitosPart } from "./lhito";
-import { mattsPart } from "./matt";
+import { lhitosPart } from "../lhito";
+import { mattsPart } from "../matt";
 
 function fightScene(initPlayingField) {
   scene("fight", () => {

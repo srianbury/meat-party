@@ -1,4 +1,6 @@
 import { Player } from "./player";
+import { chosenPlayerSprites } from "./Scenes/characterSelectScene";
+// import { playerControls } from "./options";
 import { getBanana } from "./items";
 import { getFire } from "./items";
 import { getHeal } from "./items";
@@ -25,10 +27,18 @@ function lhitosPart() {
 
   // player 2
   const player1 = new Player({
-    sprite: sprite("steak", { height: 100, width: 100 }),
+    sprite: sprite("player" + chosenPlayerSprites[0], {
+      height: 100,
+      width: 100,
+    }),
     pos: pos(300, 80),
     playerId: 1,
     controls: {
+      // up: playerControls[0][0],
+      // down: playerControls[0][1],
+      // left: playerControls[0][2],
+      // right: playerControls[0][3],
+      // shoot: playerControls[0][4],
       up: "w",
       down: "s",
       left: "a",
@@ -39,7 +49,10 @@ function lhitosPart() {
 
   // player 2
   const player2 = new Player({
-    sprite: sprite("chicken", { height: 100, width: 100 }),
+    sprite: sprite("player" + chosenPlayerSprites[1], {
+      height: 100,
+      width: 100,
+    }),
     pos: pos(width() - 400, 120),
     playerId: 2,
     controls: {
