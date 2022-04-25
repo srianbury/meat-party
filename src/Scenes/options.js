@@ -77,7 +77,7 @@
 //             purpose: 0
 //         },
 //         text(),
-//     ]); 
+//     ]);
 
 //     //image for down button
 //     add([
@@ -104,9 +104,7 @@
 //             purpose: 1
 //         },
 //         text(),
-//     ]); 
-
-    
+//     ]);
 
 //     //image for right button
 //     add([
@@ -133,7 +131,7 @@
 //             purpose: 3
 //         },
 //         text(),
-//     ]); 
+//     ]);
 
 //     //image for left button
 //     add([
@@ -160,7 +158,7 @@
 //             purpose: 2
 //         },
 //         text(),
-//     ]); 
+//     ]);
 
 //     //image for attack button
 //     add([
@@ -187,7 +185,7 @@
 //             purpose: 4
 //         },
 //         text(),
-//     ]); 
+//     ]);
 
 //       //when selected player updates
 //       onUpdate("values", (control) => {
@@ -203,7 +201,6 @@
 //             previousSelectedButton.opacity = 0.5;
 //             selectedPlayer = button.index;
 //         }
-
 
 //       });
 
