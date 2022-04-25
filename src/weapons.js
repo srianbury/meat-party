@@ -9,17 +9,19 @@ class BasicWeapon {
     this.damage = damage || 10;
     this.reloadTime = reloadTime || 3;
     this.maxAmmo = maxAmmo || 5;
+    //this.sprite = sprite || sprite("firball",{ height: 40, width: 40 });
   }
 
   spawnBullet(player, dir) {
     add([
-      rect(12, 48),
-      area(),
+      //sprite,
+      circle(16),
+      area({ width: 20, height: 40 }),
       pos(player.pos.add(40, 40)),
       origin("center"),
       color(127, 127, 255),
       outline(4),
-      move(dir, 1000),
+      move(dir, 1000), //
       cleanup(),
       "bullet", // strings here means a tag
       {
