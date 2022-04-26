@@ -4,6 +4,8 @@ import { chosenPlayerSprites } from "./Scenes/characterSelectScene";
 import { getBanana } from "./items";
 import { getFire } from "./items";
 import { getHeal } from "./items";
+import { getKnife } from "./items";
+import { getPan } from "./items";
 
 function lhitosPart() {
   function getHealthStats(players) {
@@ -12,13 +14,17 @@ function lhitosPart() {
 
   loop(randi(3, 10), () => {
     var rndInt = 0;
-    var rndInt = randi(0, 3);
-    console.log(rndInt);
+    var rndInt = randi(0, 4);
+    //console.log(rndInt);
 
     if (rndInt == 0) {
       getFire();
     } else if (rndInt == 1) {
       getBanana();
+    } else if (rndInt == 2) {
+      getKnife();
+    } else if (rndInt == 3) {
+      getPan();
     } else {
       getHeal();
     }

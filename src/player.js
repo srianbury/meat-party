@@ -73,6 +73,18 @@ class Player {
       this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
     });
 
+    this.player.onCollide("knife", (Chopper) => {
+      destroy(Chopper);
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = Chopper;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
+    });
+
+    this.player.onCollide("pan", (Pan) => {
+      destroy(Pan);
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = Pan;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
+    });
+
     this.player.action(() => {
       if (this.player.pos.y > height()) {
         this.player.hurt(PLAYER_HEALTH);
