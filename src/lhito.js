@@ -33,7 +33,7 @@ function lhitosPart() {
 
   // player 2
   const player1 = new Player({
-    sprite: sprite("player" + chosenPlayerSprites[0], {
+    sprite: sprite(chosenPlayerSprites[0], {
       height: 100,
       width: 100,
     }),
@@ -55,7 +55,7 @@ function lhitosPart() {
 
   // player 2
   const player2 = new Player({
-    sprite: sprite("player" + chosenPlayerSprites[1], {
+    sprite: sprite(chosenPlayerSprites[1], {
       height: 100,
       width: 100,
     }),
