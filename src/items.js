@@ -53,9 +53,10 @@ export function getBanana() {
   ]);
 }
 export function getKnife() {
+  const bullet = sprite("chopper", { height: 60, width: 60 });
   add([
     "knife",
-    sprite("chopper", { height: 60, width: 60 }),
+    bullet,
     pos(randi(175, 1500), randi(0, 300)),
     area(),
     body(),
@@ -64,13 +65,15 @@ export function getKnife() {
       damage: 15,
       reloadTime: 5,
       maxAmmo: 3,
+      bullet,
     },
   ]);
 }
 export function getPan() {
+  const bullet = sprite("pan", { height: 70, width: 80 });
   add([
     "pan",
-    sprite("pan", { height: 70, width: 80 }),
+    bullet,
     pos(randi(175, 1500), randi(0, 300)),
     area(),
     body(),
@@ -79,6 +82,7 @@ export function getPan() {
       damage: 12,
       reloadTime: 10,
       maxAmmo: 7,
+      bullet,
     },
   ]);
 }
