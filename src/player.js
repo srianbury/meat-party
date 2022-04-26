@@ -115,7 +115,7 @@ class Player {
     return [
       `Player: ${this.player.playerId}`,
       `HP: ${this.player.hp()}`,
-      `Ammo ${this.weapon.curAmmo}`,
+      `Ammo: ${this.weapon.curAmmo}`,
     ].join("\n");
   }
 }
