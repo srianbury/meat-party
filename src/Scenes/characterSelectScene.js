@@ -40,33 +40,35 @@ function characterSelectScene() {
     ]);
 
     characterList.forEach((character, index) => {
-      if(columns >= 4){
-        row = 1.5
-        columns = 0
+      if (columns >= 4) {
+        row = 1.5;
+        columns = 0;
       }
       add([
-            "character",
-            rect(width() * 0.2, height() * 0.2),
-            //I HATE IT HERE!!!
-            pos(width() * 0.1 + 15 * (columns + 1) * (width() * 0.01), height() * 0.5 * row),
-            origin("center"),
-            area(),
-            outline(4),
-            {
-              name: character,
-              chosen: false,
-            },
-            sprite(character, {height: 100, width: 100}),
-          ]);
+        "character",
+        rect(width() * 0.2, height() * 0.2),
+        //I HATE IT HERE!!!
+        pos(
+          width() * 0.1 + 15 * (columns + 1) * (width() * 0.01),
+          height() * 0.5 * row
+        ),
+        origin("center"),
+        area(),
+        outline(4),
+        {
+          name: character,
+          chosen: false,
+        },
+        sprite(character, { height: 100, width: 100 }),
+      ]);
 
       columns = columns + 1;
-    })
+    });
 
     //selects the character, and updates color of already chosen characters
     onClick("character", (playerCharacter) => {
       if (!playerCharacter.chosen) {
-        chosenPlayerSprites[choosingPlayer] =
-          playerCharacter.name;
+        chosenPlayerSprites[choosingPlayer] = playerCharacter.name;
         choosingPlayer = choosingPlayer + 1;
         playerCharacter.chosen = true;
         playerCharacter.color = GREEN;
