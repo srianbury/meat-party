@@ -1,9 +1,12 @@
+import { characterList } from "../characterList";
+
 let chosenPlayerSprites = ["", "", "", ""];
 
 function characterSelectScene() {
-  const totalCharacters = 4;
   let choosingPlayer = 0;
   let numberOfPlayers = 2;
+  let row = 1;
+  let columns = 0;
 
   scene("characterSelect", () => {
     //title of the page
@@ -36,27 +39,36 @@ function characterSelectScene() {
       origin("center"),
     ]);
 
-    for (let i = 1; i <= totalCharacters; i++) {
+    characterList.forEach((character) => {
+      if (columns >= 4) {
+        row = 1.5;
+        columns = 0;
+      }
       add([
         "character",
         rect(width() * 0.2, height() * 0.2),
-        pos(width() * 0.1 + 15 * i * (width() * 0.01), height() * 0.6),
+        //I HATE IT HERE!!!
+        pos(
+          width() * 0.1 + 15 * (columns + 1) * (width() * 0.01),
+          height() * 0.5 * row
+        ),
         origin("center"),
         area(),
         outline(4),
         {
-          character: i,
+          name: character,
           chosen: false,
         },
-        sprite("player" + i, { height: 100, width: 100 }),
+        sprite(character, { height: 100, width: 100 }),
       ]);
-    }
+
+      columns = columns + 1;
+    });
 
     //selects the character, and updates color of already chosen characters
     onClick("character", (playerCharacter) => {
       if (!playerCharacter.chosen) {
-        chosenPlayerSprites[choosingPlayer] =
-          playerCharacter.character.toString();
+        chosenPlayerSprites[choosingPlayer] = playerCharacter.name;
         choosingPlayer = choosingPlayer + 1;
         playerCharacter.chosen = true;
         playerCharacter.color = GREEN;
@@ -72,6 +84,8 @@ function characterSelectScene() {
       if (!(choosingPlayer < numberOfPlayers)) {
         go("start");
         choosingPlayer = 0;
+        columns = 0;
+        row = 1;
       }
     });
   });
