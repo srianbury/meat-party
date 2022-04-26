@@ -60,12 +60,11 @@ export function getKnife() {
       damage: 15,
       reloadTime: 5,
       maxAmmo: 3,
-      
-     },
+    },
   ]);
 }
 export function getPan() {
- add([
+  add([
     "pan",
     sprite("pan", { height: 70, width: 80 }),
     pos(randi(175, 1500), randi(0, 300)),
@@ -76,7 +75,6 @@ export function getPan() {
       damage: 12,
       reloadTime: 10,
       maxAmmo: 7,
-        
-      },
-  ]); 
+    },
+  ]);
 }

@@ -4,7 +4,7 @@ import { chosenPlayerSprites } from "./Scenes/characterSelectScene";
 import { getBanana } from "./items";
 import { getFire } from "./items";
 import { getHeal } from "./items";
-import { getKnife} from "./items";
+import { getKnife } from "./items";
 import { getPan } from "./items";
 
 function lhitosPart() {
@@ -21,9 +21,9 @@ function lhitosPart() {
       getFire();
     } else if (rndInt == 1) {
       getBanana();
-    } else if (rndInt == 2){
+    } else if (rndInt == 2) {
       getKnife();
-    } else if (rndInt == 3){
+    } else if (rndInt == 3) {
       getPan();
     } else {
       getHeal();
