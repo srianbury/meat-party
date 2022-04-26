@@ -82,7 +82,12 @@ class Player {
     });
 
     this.player.action(() => {
-      if (this.player.pos.y > height()) {
+      if (
+        this.player.pos.y > height() ||
+        this.player.pos.y < -10 ||
+        this.player.pos.x > width() ||
+        this.player.pos.x < -10
+      ) {
         this.player.hurt(PLAYER_HEALTH);
       }
     });
