@@ -3,13 +3,14 @@ class BasicWeapon {
    * player: who the weapon belongs to
    */
   constructor(options = {}) {
-    const { curAmmo, damage, reloadTime, maxAmmo, bullet } = options;
+    const { curAmmo, damage, reloadTime, maxAmmo, bullet, speed } = options;
     this.curAmmo = curAmmo || 5;
     this.reloading = false;
     this.damage = damage || 10;
     this.reloadTime = reloadTime || 3;
     this.maxAmmo = maxAmmo || 5;
     this.bullet = bullet || sprite("fireball", { height: 60, width: 90 });
+    this.speed = speed || 1000;
     //this.sprite = sprite || sprite("firball",{ height: 40, width: 40 });
   }
 
@@ -20,7 +21,7 @@ class BasicWeapon {
       area(),
       pos(player.pos.add(40, 40)),
       origin("center"),
-      move(dir, 1000), //
+      move(dir, this.speed), //
       cleanup(),
       "bullet", // strings here means a tag
       {

@@ -16,6 +16,7 @@ export function getFire() {
       maxAmmo: 2,
       //sprite: sprite("pepper",{ height: 40, width: 40 })
       bullet,
+      speed: 1500,
     },
   ]);
 }
@@ -49,6 +50,7 @@ export function getBanana() {
       maxAmmo: 10,
       //sprite: sprite("banana",{ height: 40, width: 40 })
       bullet,
+      speed: 800,
     },
   ]);
 }
@@ -66,6 +68,7 @@ export function getKnife() {
       reloadTime: 5,
       maxAmmo: 3,
       bullet,
+      speed: 1200,
     },
   ]);
 }
@@ -83,6 +86,7 @@ export function getPan() {
       reloadTime: 10,
       maxAmmo: 7,
       bullet,
+      speed: 750,
     },
   ]);
 }
