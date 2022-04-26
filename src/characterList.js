@@ -1,4 +1,4 @@
-export default characterList = [
+const characterList = [
   "player1",
   "player2",
   "player3",
@@ -7,3 +7,5 @@ export default characterList = [
   "chicken",
   "steak",
 ];
+
+export {characterList};

@@ -1,4 +1,4 @@
-import characterList from "../characterList";
+import { characterList } from "../characterList";
 
 let chosenPlayerSprites = ["", "", "", ""];
 
