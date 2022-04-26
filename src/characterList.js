@@ -6,6 +6,7 @@ const characterList = [
   "carrot",
   "chicken",
   "steak",
+  "brocolli",
 ];
 
 export { characterList };
