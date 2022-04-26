@@ -62,6 +62,18 @@ function characterSelectScene() {
         sprite(character, { height: 100, width: 100 }),
       ]);
 
+      add([
+        "characterName",
+        text(character, {
+          size: 48,
+        }),
+        pos(
+          width() * 0.1 + 15 * (columns + 1) * (width() * 0.01),
+          height() * 0.6 * row
+        ),
+        origin("center"),
+      ]);
+
       columns = columns + 1;
     });
 
