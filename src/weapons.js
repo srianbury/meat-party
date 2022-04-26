@@ -9,7 +9,7 @@ class BasicWeapon {
     this.damage = damage || 10;
     this.reloadTime = reloadTime || 3;
     this.maxAmmo = maxAmmo || 5;
-    this.bullet = bullet || rect(12, 48);
+    this.bullet = bullet || sprite("fireball", { height: 60, width: 90 });
     //this.sprite = sprite || sprite("firball",{ height: 40, width: 40 });
   }
 
