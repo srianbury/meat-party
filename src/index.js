@@ -49,9 +49,9 @@ loadSound("reloaded", reloaded);
 loadSound("song", song);
 
 const music = play("song", {
-    volume: 0.8,
-    loop: true
-  })
+  volume: 0.8,
+  loop: true,
+});
 
 mainMenu();
 // options();

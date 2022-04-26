@@ -20,8 +20,6 @@ function mattsPart() {
     times.time += dt();
     times.text = times.time.toFixed(2);
   });
-
-
 }
 
 export { mattsPart };
