@@ -63,14 +63,15 @@ class Player {
 
     this.player.onCollide("fire", (fire) => {
       destroy(fire);
-      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = fire;
-      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
+      // const { curAmmo, damage, reloadTime, maxAmmo, sprite, bullet } = fire;
+      // this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite, bullet });
+      this.setWeapon(fire);
     });
 
     this.player.onCollide("banana", (banana) => {
       destroy(banana);
-      const { curAmmo, damage, reloadTime, maxAmmo, sprite } = banana;
-      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite });
+      const { curAmmo, damage, reloadTime, maxAmmo, sprite, bullet } = banana;
+      this.setWeapon({ curAmmo, damage, reloadTime, maxAmmo, sprite, bullet });
     });
 
     this.player.action(() => {

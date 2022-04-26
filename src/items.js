@@ -1,8 +1,9 @@
 export function getFire() {
+  const bullet = sprite("pepper", { height: 60, width: 90 });
   //comment
   add([
     "fire",
-    sprite("pepper", { height: 60, width: 90 }),
+    bullet,
     //pos(width() / 3, 300),
     //pos(width() / randi(.01,1), randi(0,300)),
     pos(randi(175, 1500), randi(0, 300)),
@@ -14,6 +15,7 @@ export function getFire() {
       reloadTime: 3,
       maxAmmo: 5,
       //sprite: sprite("pepper",{ height: 40, width: 40 })
+      bullet,
     },
   ]);
 }
@@ -31,9 +33,10 @@ export function getHeal() {
 }
 
 export function getBanana() {
+  const bullet = sprite("banana", { height: 40, width: 40 });
   add([
     "banana",
-    sprite("banana", { height: 40, width: 40 }),
+    bullet,
     //pos(width() * 0.4, 80),
     //pos(width() * randi(.01,1), randi(0,300)),
     pos(randi(175, 1500), randi(0, 300)),
@@ -45,6 +48,7 @@ export function getBanana() {
       reloadTime: 10,
       maxAmmo: 10,
       //sprite: sprite("banana",{ height: 40, width: 40 })
+      bullet,
     },
   ]);
 }
