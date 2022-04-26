@@ -9,6 +9,7 @@ import pepper from "../public/sprites/pepper.png";
 import shelf from "../public/sprites/shelf2.png";
 import banana from "../public/sprites/banana.png";
 import reloaded from "url:../public/sounds/reloaded.mp3";
+import song from "url:../public/sounds/song.mp3";
 import { startScene } from "./Scenes/startScene";
 import { fightScene } from "./Scenes/fightScene";
 import { endScene } from "./Scenes/endScene";
@@ -45,11 +46,17 @@ loadSprite("steak", Steak);
 loadSprite("brocolli", brocolli);
 loadSprite("fireball", fireball);
 loadSound("reloaded", reloaded);
+loadSound("song", song);
+
+const music = play("song", {
+    volume: 0.8,
+    loop: true
+  })
 
 mainMenu();
 // options();
 characterSelectScene();
 startScene(initPlayingField);
-fightScene(initPlayingField);
-endScene(initPlayingField);
+fightScene(initPlayingField, music);
+endScene(initPlayingField, music);
 go("mainMenu");
