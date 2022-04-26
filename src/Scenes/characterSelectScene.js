@@ -39,7 +39,7 @@ function characterSelectScene() {
       origin("center"),
     ]);
 
-    characterList.forEach((character, index) => {
+    characterList.forEach((character) => {
       if (columns >= 4) {
         row = 1.5;
         columns = 0;
