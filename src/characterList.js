@@ -8,4 +8,4 @@ const characterList = [
   "steak",
 ];
 
-export {characterList};
+export { characterList };
