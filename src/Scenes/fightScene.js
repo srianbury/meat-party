@@ -1,10 +1,11 @@
 import { lhitosPart } from "../lhito";
 import { mattsPart } from "../matt";
 
-function fightScene(initPlayingField) {
+function fightScene(initPlayingField, music) {
   scene("fight", () => {
     initPlayingField();
     mattsPart();
+    music.play();
     lhitosPart();
   });
 }

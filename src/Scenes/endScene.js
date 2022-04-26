@@ -1,5 +1,6 @@
-function endScene(initPlayingField) {
+function endScene(initPlayingField, music) {
   scene("end", ({ winner }) => {
+    music.stop();
     initPlayingField();
     add([
       text(
